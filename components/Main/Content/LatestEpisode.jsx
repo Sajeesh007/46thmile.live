@@ -22,7 +22,7 @@ export default function LatestEpisode() {
   
   return (
     <div>
-      <div className='flex flex-col justify-center items-center text-black bg-gray-200 rounded-xl w-52 my-2'>
+      <div className='flex flex-col justify-center items-center text-black bg-gray-100 rounded-xl w-52 my-2'>
         
         <h2 className='font-semibold text-lg px-2 pt-4'>Latest episode</h2>
         
@@ -33,7 +33,7 @@ export default function LatestEpisode() {
           </div>
         </div>
         
-        <div className='font-semibold text-sm flex flex-col justify-center items-center px-2 py-2'>
+        <div className='font-semibold text-sm flex flex-col justify-center items-center px-2 py-2 bg-gray-300 mx-2 my-2 rounded-2xl'>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod sequi tempora laboriosam hic, cum velit.
           </p>
