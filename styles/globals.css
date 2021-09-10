@@ -15,8 +15,8 @@
   .icon-social{
     @apply text-white text-4xl mx-3 cursor-pointer;
   }
-  .line{
-    @apply h-0.5 w-24 bg-white;
+  .menu-icon{
+    @apply text-white text-2xl
   }
 }
 

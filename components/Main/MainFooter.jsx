@@ -2,7 +2,7 @@ import { FaInstagram,FaSpotify } from 'react-icons/fa'
 
 export default function MainFooter() {
   return (
-    <div className='flex flex-col justify-center items-center tracking-wider mt-2'>
+    <div className='z-20 flex flex-col justify-center items-center w-screen bg-gray-500'>
       <h1 className='text-xl text-center text-white font-semibold'>Follow Us</h1>
       <div className='flex '>
         <a href="https://www.instagram.com/46thmile.live" target='_blank'>

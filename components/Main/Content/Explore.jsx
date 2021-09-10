@@ -1,20 +1,19 @@
+import SmallCard from "../../Cards/SmallCard";
+
 export default function Explore() {
   return (
-    <div>
-      <div className='flex flex-col justify-center items-center text-black bg-gray-100 rounded-xl w-52 mt-4'>
-        
-        <h2 className='font-semibold text-lg px-2 pt-4'>Missed our previous episodes?</h2>
-  
-        <div className='font-semibold text-sm flex flex-col justify-center items-center px-2 py-2 bg-gray-300 mx-2 my-2 rounded-2xl'>
-          <p>
-            Click below to browser all of our episodes
-          </p>
-        </div>
-
-        <div className='bg-gray-900 text-xl text-white rounded-full px-6 py-1 mb-4'>
-          Explore
-        </div>
-
+    <div className='flex flex-col text-white mx-6 mb-20'>
+      <div className='flex justify-between items-center px-1 pb-1'>
+        <h1 className='text-base' >Podcasts</h1>
+        <h3 className='text-xs text-gray-400'>See All</h3>
+      </div>
+      <div className='grid grid-cols-3 gap-4'>
+        <SmallCard/>
+        <SmallCard/>
+        <SmallCard/>
+        <SmallCard/>
+        <SmallCard/>
+        <SmallCard/>
       </div>
     </div>
   )
