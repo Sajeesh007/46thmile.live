@@ -1,4 +1,4 @@
-import MainCard from "../../Cards/MainCard"
+import MainCard from "../Cards/MainCard"
 
 export default function LatestEpisode() {
 

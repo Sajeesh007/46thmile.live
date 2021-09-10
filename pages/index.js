@@ -1,16 +1,18 @@
-import Head from 'next/head'
-import MainContent from '../components/Main/MainContent'
-import FooterMenu from '../components/Navbar/FooterMenu'
-import Header from '../components/Navbar/Header'
+import Explore from '../components/Main/Explore'
+import LatestEpisode from '../components/Main/LatestEpisode'
+import MainHeader from '../components/Main/MainHeader'
+
 
 
 export default function Home() {
   
   return (
-    <div className="flex flex-col bg-black min-h-screen w-screen">
-      <Header/>
-      <MainContent/>
-      <FooterMenu/>
+    <div className="min-h-screen w-screen">
+      <MainHeader/> 
+      <div className='flex flex-col items-center mt-16'>
+        <LatestEpisode/>
+        <Explore/>
+      </div>
     </div>
   )
 }
