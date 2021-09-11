@@ -5,7 +5,7 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
 
   return (
-    <div className='bg-black '>
+    <div className='bg-black'>
       <Header/>
       <Component {...pageProps} />
       <FooterMenu/>

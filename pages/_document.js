@@ -12,7 +12,7 @@ class MyDocument extends Document {
           <link rel='manifest' href='/manifest.json' />
 
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={true}/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet"/>
           <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet"/>
         </Head>

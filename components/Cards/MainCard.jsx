@@ -4,7 +4,7 @@ import demo from '../../public/demo.jpg'
 
 export default function MainCard() {
   return (
-    <>
+    <div className='flex flex-col justify-center items-center text-black mt-4'>
       <Link href='/podcasts/c'>
         <a>
           <div className='relative'>
@@ -17,6 +17,6 @@ export default function MainCard() {
           </div>
           </a>
       </Link>
-    </>
+    </div>
   )
 }
