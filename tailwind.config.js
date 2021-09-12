@@ -4,6 +4,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors:{
+        gray:{
+          1000:'#171717'
+        }
+      },
       fontFamily: {
         'merienda' : 'Merienda',
         'cinzel':'"Cinzel Decorative"'

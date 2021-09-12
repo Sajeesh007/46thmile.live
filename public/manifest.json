@@ -2,8 +2,8 @@
   "name": "46thmile.live",
   "short_name": "46thmile.live",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#171717",
+  "background_color": "#171717",
   "orientation": "portrait",
   "start_url": "/",
   "icons": [

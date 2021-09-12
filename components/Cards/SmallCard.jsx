@@ -8,10 +8,10 @@ export default function SmallCard({podcast}) {
       <Link href='/podcasts/Celebrity'>
         <a >
           <div className={`text-white flex ${podcast ? ' flex-col items-start justify-center mx-6 h-60 space-y-2'
-            :'flex-col items-start justify-center' }`}>
+            :'flex-col items-start justify-center h-40 w-40' }`}>
             
             <Image src={demo.src} className='rounded-2xl object-fill' 
-              width={podcast ? 400 : 300} height={podcast ? 500 : 300 }/>
+              width={podcast ? 400 : 400} height={podcast ? 500 : 400 }/>
     
             <div className={` w-full flex flex-col ${podcast && 'justify-center items-center'}`}>
               <h2 className='text-base font-merienda'>Celebrity.Live</h2> 

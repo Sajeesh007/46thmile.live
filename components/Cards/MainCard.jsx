@@ -1,20 +1,32 @@
+import {useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import demo from '../../public/demo.jpg'
 
-export default function MainCard() {
+import { useSlider } from '../../store/Context'
+
+export default function MainCard({source}) {
+
+  const {setActive,active} = useSlider()
+
+  const [touchStart, setTouchStart] = useState('')
+
+  const style = {
+    boxShadow : '0rem 0rem 1rem #000',
+  }
+
+  const handleTouch =(e)=>{
+    if(e.type === 'touchstart')
+      setTouchStart(e.changedTouches[0].clientX)
+    else
+      touchStart > e.changedTouches[0].clientX ? active > 2 ? setActive((prev)=>prev - 2) : setActive((prev)=>prev + 1) : active < 2 ? setActive((prev)=>prev + 2) : setActive((prev)=>prev - 1)
+  }
+  
   return (
-    <div className='flex flex-col justify-center items-center text-black mt-4'>
-      <Link href='/podcasts/c'>
-        <a>
-          <div className='relative'>
-            <Image src={demo.src} className='rounded-3xl' width={285} height={300}/>
-            <div className='absolute w-full h-36 bottom-0 pt-20 pl-2 inset-x-0 items-start justify-center flex flex-col
-            bg-gradient-to-tr from-black via-transparent to-transparent text-white'>
-              <h3 className='text-xs uppercase '>Celebrity.Live</h3>
-              <h2 className='text-lg font-merienda'>ft. Shambu</h2>
-            </div>
-          </div>
+    <div className='flex flex-col justify-center items-center mt-4 rounded-3xl' style={style} 
+      onTouchStart={handleTouch} onTouchEnd={handleTouch}>
+      <Link href='/'>
+        <a className='flex justify-center items-center' >
+            <Image src={source} className='rounded-3xl' width={285} height={300} />
           </a>
       </Link>
     </div>

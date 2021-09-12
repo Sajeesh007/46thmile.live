@@ -3,7 +3,7 @@ import Link from 'next/link'
 import MiniAudioPlayer from '../../components/Audio/MiniAudioPlayer'
 import { FaPodcast } from "react-icons/fa"
 import { AiFillHome } from "react-icons/ai"
-import { BsInfo } from "react-icons/bs"
+import { MdLibraryAdd } from "react-icons/md"
 import { useEffect } from 'react'
 
 
@@ -34,8 +34,8 @@ export default function FooterMenu() {
 
         <Link href='/about'><a>
           <div className='flex flex-col justify-center items-center text-xs' id='install'>
-            <BsInfo className='menu-icon'/>
-            <p>About</p>
+            <MdLibraryAdd className='menu-icon'/>
+            <p>Library</p>
           </div>
         </a></Link>
       </div>

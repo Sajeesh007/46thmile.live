@@ -10,13 +10,16 @@
 
 @layer components{
   .icon-music-control{
-    @apply text-white text-2xl cursor-pointer;
+    @apply text-white text-3xl cursor-pointer;
   }
   .icon-social{
     @apply text-white text-4xl mx-3 cursor-pointer;
   }
   .menu-icon{
-    @apply text-white text-2xl
+    @apply text-white text-2xl;
+  }
+  .slider-round{
+    @apply border border-white rounded-full w-2 h-2;
   }
 }
 
@@ -29,3 +32,4 @@
   width: 0;  
   background: transparent;  
 } 
+

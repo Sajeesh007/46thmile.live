@@ -3,8 +3,8 @@ import Logo from '../../public/logo.png'
 
 export default function MainHeader() {
   return (
-    <div className='absolute w-full h-48 tracking-tighter top-0 flex flex-col justify-start items-center' >
-      <div className='mt-1 rounded-full bg-white'>
+    <div className='absolute w-full h-48 tracking-tighter top-0 flex flex-col justify-start items-center ' >
+      <div className='mt-1 rounded-full bg-black '>
         <img className='h-16 w-16' src={Logo.src} alt="logo" />
       </div>
       <div className='text-white flex flex-col justify-center items-center'>
