@@ -2,8 +2,10 @@ import Logo from '../../public/logo.png'
 
 
 export default function MainHeader() {
+
+  
   return (
-    <div className='absolute w-full h-48 tracking-tighter top-0 flex flex-col justify-start items-center ' >
+    <div className='absolute w-52 h-32 tracking-tighter top-0 flex flex-col justify-start items-center z-40' >
       <div className='mt-1 rounded-full bg-black '>
         <img className='h-16 w-16' src={Logo.src} alt="logo" />
       </div>

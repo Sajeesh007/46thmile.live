@@ -17,17 +17,22 @@ export default function MainCard({source}) {
   const handleTouch =(e)=>{
     if(e.type === 'touchstart')
       setTouchStart(e.changedTouches[0].clientX)
-    else
-      touchStart > e.changedTouches[0].clientX ? active > 2 ? setActive((prev)=>prev - 2) : setActive((prev)=>prev + 1) : active < 2 ? setActive((prev)=>prev + 2) : setActive((prev)=>prev - 1)
+    else{
+      if((touchStart - e.changedTouches[0].clientX) > 5){
+        active > 2 ? setActive((prev)=>prev - 2) : setActive((prev)=>prev + 1)
+      }else if((e.changedTouches[0].clientX - touchStart) > 5){
+        active < 2 ? setActive((prev)=>prev + 2) : setActive((prev)=>prev - 1)
+      }
+    }
   }
   
   return (
     <div className='flex flex-col justify-center items-center mt-4 rounded-3xl' style={style} 
       onTouchStart={handleTouch} onTouchEnd={handleTouch}>
-      <Link href='/'>
+      <Link href='/podcasts/c'>
         <a className='flex justify-center items-center' >
-            <Image src={source} className='rounded-3xl' width={285} height={300} />
-          </a>
+          <Image src={source} className='rounded-3xl' width={285} height={300} />
+        </a>
       </Link>
     </div>
   )

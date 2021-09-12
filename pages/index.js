@@ -7,8 +7,10 @@ export default function Home() {
   
   
   return (
-    <div className="min-h-screen pb-16 ">
-      <MainHeader/> 
+    <div className="min-h-screen pb-16">
+      <div className='flex justify-center items-center'>
+        <MainHeader/> 
+      </div> 
       <div className='flex flex-col items-center justify-center pb-16 '>
         <Slider/>
         <div>
