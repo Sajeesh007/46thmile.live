@@ -1,24 +1,50 @@
-import MainCard from '../components/Cards/MainCard'
+import { podcast,accessToken } from '../utils/helper'
+import { usePodcast } from '../store/Context'
+
+import { useEffect } from 'react'
+
 import Explore from '../components/Main/Explore'
 import MainHeader from '../components/Main/MainHeader'
 import Slider from '../components/Main/Slider'
 
-export default function Home() {
+
+export default function Home({podcasts}) {
   
+  const {podcastData,setPodcastData} = usePodcast()
+
+  useEffect(() => {
+    console.log(podcasts)
+    setPodcastData(podcasts.result)
+  }, [])
   
   return (
-    <div className="min-h-screen pb-16">
-      <div className='flex justify-center items-center'>
+    <div className="min-h-screen pb-32">
+      <div className='flex flex-col items-center justify-center'>
         <MainHeader/> 
-      </div> 
-      <div className='flex flex-col items-center justify-center pb-16 '>
-        <Slider/>
-        <div>
-          <Explore title='Podcasts' isHome={true}/>
-          <Explore title='Events' isHome={true}/>
+        <div className='flex justify-center items-center '>
+          <Slider/>
+        </div>
+        <div className='mt-2'>
+          <Explore title='Podcasts' isHome={true} data={podcasts.result} isPodcast/>
+          <Explore title='Events' isHome={true} data={podcasts.result}/>
         </div>
         
       </div>
     </div>
   )
+}
+
+
+export async function getStaticProps(){
+
+  const masterRef = await accessToken()
+
+  const podcasts = await podcast(masterRef,'desc')
+
+  return {
+    props : {
+      podcasts : podcasts
+    }
+    
+  }
 }

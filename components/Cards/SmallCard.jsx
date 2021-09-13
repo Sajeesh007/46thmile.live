@@ -1,21 +1,22 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import demo from '../../public/demo.jpg'
+import jass from '../../public/jass.jpeg'
 
-export default function SmallCard({podcast}) {
+export default function SmallCard({isPodcastPage,title,artist,image,alt,isPodcast }) {
   return (
     <>
       <Link href='/podcasts/Celebrity'>
-        <a >
-          <div className={`text-white flex ${podcast ? ' flex-col items-start justify-center mx-6 h-60 space-y-2'
-            :'flex-col items-start justify-center h-40 w-40' }`}>
+        <a>
+          <div className={`text-white flex flex-col justify-center${isPodcastPage ? ' items-center h-60 space-y-2 w-80'
+            :'items-start h-40 w-40' }`}>
             
-            <Image src={demo.src} className='rounded-2xl object-fill' 
-              width={podcast ? 400 : 400} height={podcast ? 500 : 400 }/>
+            <Image src={image} className='rounded-2xl object-fill' 
+              width={isPodcastPage ? 400 : 400} height={isPodcastPage ? 500 : 400 } alt={alt}/>
     
-            <div className={` w-full flex flex-col ${podcast && 'justify-center items-center'}`}>
-              <h2 className='text-base font-merienda'>Celebrity.Live</h2> 
-              <h3 className='text-sm '>ft. Shambu</h3>
+            <div className={`w-full flex flex-col ${isPodcastPage && 'justify-center items-center'}`}>
+              <h2 className='text-sm truncate mt-1 '>{title}</h2> 
+              {isPodcast && <h3 className='text-xs text-gray-400 truncate'>feat. {artist}</h3> }
             </div>
               
           </div>

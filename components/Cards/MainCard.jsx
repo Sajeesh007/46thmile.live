@@ -29,7 +29,7 @@ export default function MainCard({source}) {
   return (
     <div className='flex flex-col justify-center items-center mt-4 rounded-3xl' style={style} 
       onTouchStart={handleTouch} onTouchEnd={handleTouch}>
-      <Link href='/podcasts/c'>
+      <Link href='/podcasts/d'>
         <a className='flex justify-center items-center' >
           <Image src={source} className='rounded-3xl' width={285} height={300} />
         </a>
