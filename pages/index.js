@@ -10,10 +10,10 @@ import Slider from '../components/Main/Slider'
 
 export default function Home({podcasts}) {
   
-  const {podcastData,setPodcastData} = usePodcast()
+  const {setPodcastData} = usePodcast()
+
 
   useEffect(() => {
-    console.log(podcasts)
     setPodcastData(podcasts.result)
   }, [])
   
@@ -25,8 +25,8 @@ export default function Home({podcasts}) {
           <Slider/>
         </div>
         <div className='mt-2'>
-          <Explore title='Podcasts' isHome={true} data={podcasts.result} isPodcast/>
-          <Explore title='Events' isHome={true} data={podcasts.result}/>
+          <Explore title='Podcasts' isHome={true} data={podcasts?.result} isPodcast />
+          <Explore title='Events' isHome={true} data={podcasts?.result} />
         </div>
         
       </div>
@@ -34,11 +34,9 @@ export default function Home({podcasts}) {
   )
 }
 
-
 export async function getStaticProps(){
 
   const masterRef = await accessToken()
-
   const podcasts = await podcast(masterRef,'desc')
 
   return {

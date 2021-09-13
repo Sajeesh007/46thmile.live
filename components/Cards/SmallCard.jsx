@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import demo from '../../public/demo.jpg'
-import jass from '../../public/jass.jpeg'
 
-export default function SmallCard({isPodcastPage,title,artist,image,alt,isPodcast }) {
+export default function SmallCard({isPodcastPage,title,artist,image,alt,isPodcast,uid }) {
+
   return (
     <>
-      <Link href='/podcasts/Celebrity'>
+      <Link href={`/podcasts/${uid}`}>
         <a>
           <div className={`text-white flex flex-col justify-center${isPodcastPage ? ' items-center h-60 space-y-2 w-80'
             :'items-start h-40 w-40' }`}>

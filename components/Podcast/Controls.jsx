@@ -4,7 +4,7 @@ import { IoMdShare} from 'react-icons/io'
 import { MdAdd } from 'react-icons/md'
 import { useControls } from '../../store/Context'
 
-export default function Controls() {
+export default function Controls({date,length}) {
 
   const audioRef = useRef()
   
@@ -34,8 +34,8 @@ export default function Controls() {
           <audio src={audio} ref={audioRef}></audio>
         </div>
         <div className='flex flex-col text-sm justify-center items-start'>
-          <p>March 31</p> 
-          <p>4 min</p>
+          <p>{date}</p> 
+          <p>{length} mins</p>
         </div>
       </div>
       

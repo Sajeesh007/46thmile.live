@@ -39,22 +39,20 @@ const podcast = async (ref,order) => {
   //&pageSize=${pageSize}&page=${pageNumber}
   // currentPage : album.data.total_pages,
   // totalPages : album.data.total_pages,
-  
-  
+
   return {
     id : podcastData.data.results.map((podcasts)=>podcasts.data.details[1].text),
-    result : podcastData.data.results.map((podcasts)=>podcasts.data),
+    uid : podcastData.data.results.map((podcasts)=>podcasts.uid),
+    result : podcastData.data.results.map((podcasts)=>podcasts),
   }
 }
 
-const podcastSearch = async (ref, search) => {
-  const podcastPredicates = '[at(document.type, "releases")]'
-  const podcastOrdering = '[my.releases.release_date desc]'
-  const searchItem = `[fulltext(document,"${search}")]`
-  const podcast = await axios.get(`https://ommm-website.prismic.io/api/v2/documents/search?ref=${ref}&q=[${albumPredicates}]&q=[${searchItem}]
-  &orderings=${albumOrdering}`)
+const podcastSearch = async (ref, uid) => {
+  const podcastPredicates = `[at(my.podcast.uid,"${uid}")]`
+  const podcastData = await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${podcastPredicates}]`)
   return{
-    id : album.data.results.map((releases)=>releases.data.release_details[3].text),
+    id : podcastData.data.results.map((podcasts)=>podcasts.data.details[1].text),
+    result : podcastData.data.results.map((podcasts)=>podcasts.data)
   }
 }
 
