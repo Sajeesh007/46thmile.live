@@ -3,16 +3,26 @@ import Link from 'next/link'
 import MiniAudioPlayer from '../../components/Audio/MiniAudioPlayer'
 import { FaPodcast } from "react-icons/fa"
 import { AiFillHome, AiOutlineTeam } from "react-icons/ai"
-import { useEffect } from 'react'
+import FullAudioPlayer from '../Audio/FullAudioPlayer'
+import { useOther } from '../../store/Context'
 
 
 export default function FooterMenu() {
 
+  const {showMusicPlayer,setShowMusicPlayer} = useOther()
+
+  const handleShow = () =>{
+    setShowMusicPlayer(!showMusicPlayer)
+  }
+
 
   return (
     <div className='flex flex-col'>
-      <div className='fixed w-full bottom-16 px-3'>
-        <MiniAudioPlayer/>
+      <div>
+        {showMusicPlayer && <FullAudioPlayer hide={handleShow}/>}
+      </div>
+      <div className='fixed w-full bottom-16 px-3' >
+        <MiniAudioPlayer show={handleShow}/>
       </div>
       <div className='fixed w-full h-16 flex justify-around items-center text-gray-400 -bottom-1 pb-3
       bg-gradient-to-t from-black to-transparent'>

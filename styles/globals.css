@@ -10,16 +10,16 @@
 
 @layer components{
   .icon-music-control{
-    @apply text-white text-3xl cursor-pointer;
-  }
-  .icon-social{
-    @apply text-white text-4xl mx-3 cursor-pointer;
+    @apply text-white cursor-pointer;
   }
   .menu-icon{
     @apply text-white text-2xl;
   }
   .slider-round{
     @apply border border-white rounded-full w-2 h-2;
+  }
+  .gradient{
+    @apply  bg-gradient-to-tr from-yellow-600 via-yellow-400 to-yellow-200;
   }
 }
 
@@ -33,3 +33,31 @@
   background: transparent;  
 } 
 
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    border-radius: 20px;
+    background: #979797; /* Grey background */
+    outline: none; /* Remove outline */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+   
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-radius: 50%;
+  width: 0.75rem; 
+  height: 0.75rem; 
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 0.75rem; 
+  height: 0.75rem; 
+  background: #ffffff;
+  cursor: pointer;
+}

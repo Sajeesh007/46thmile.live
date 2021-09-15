@@ -1,14 +1,13 @@
 import '../styles/globals.css'
 import circle from '../public/circle-scatter.svg'
 
-import {Context} from '../store/Context'
+import {Context, useOther} from '../store/Context'
 import FooterMenu from '../components/Navbar/FooterMenu'
 import Header from '../components/Navbar/Header'
 
 
-function MyApp({ Component, pageProps }) {
 
-  
+function MyApp({ Component, pageProps }) {
 
   return (
     <div className='bg-black' 
@@ -20,8 +19,9 @@ function MyApp({ Component, pageProps }) {
       >
       <Context>
         <Header />
-        <Component {...pageProps} />
+        <Component {...pageProps}/>
         <FooterMenu/>
+        
       </Context>
     </div>
   )

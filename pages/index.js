@@ -26,7 +26,7 @@ export default function Home({podcasts}) {
         </div>
         <div className='mt-2'>
           <Explore title='Podcasts' isHome={true} data={podcasts?.result} isPodcast />
-          <Explore title='Events' isHome={true} data={podcasts?.result} />
+          <Explore title='Other Programs' isHome={true} data={podcasts?.result} />
         </div>
         
       </div>

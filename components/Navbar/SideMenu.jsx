@@ -1,7 +1,7 @@
 import { AiFillHome, AiOutlineTeam } from "react-icons/ai";
 import { FaPodcast } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { MdEventNote, MdLibraryMusic } from "react-icons/md";
+import { MdEventNote} from "react-icons/md";
 import SideMenuItems from "./SideMenuItems";
 
 export default function SideMenu({hideMenu}) {
@@ -21,7 +21,7 @@ export default function SideMenu({hideMenu}) {
           <div className='flex flex-col justify-center items-start space-y-4 '>
             <SideMenuItems icon={<AiFillHome className='menu-icon text-3xl'/>} name='Home' path='/'/>
             <SideMenuItems icon={<FaPodcast className='menu-icon text-3xl'/>} name='Podcasts' path='/podcasts'/>
-            <SideMenuItems icon={<MdEventNote className='menu-icon text-3xl'/>} name='Other events' path='/events'/>
+            <SideMenuItems icon={<MdEventNote className='menu-icon text-3xl'/>} name='Other programs' path='/events'/>
             <SideMenuItems icon={<AiOutlineTeam className='menu-icon text-3xl'/>} name='About Us' path='/about'/>
           </div>
 

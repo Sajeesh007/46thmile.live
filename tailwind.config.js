@@ -9,6 +9,9 @@ module.exports = {
           1000:'#171717'
         }
       },
+      zIndex: {
+        '100': '100',
+       },
       fontFamily: {
         'merienda' : 'Merienda',
         'cinzel':'"Cinzel Decorative"'
