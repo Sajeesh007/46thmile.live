@@ -1,10 +1,8 @@
-import demo from '../../public/demo.jpg'
-import Explore from "../../components/Main/Explore";
 import Content from "../../components/Podcast/Content";
 import Controls from "../../components/Podcast/Controls";
 import Heading from "../../components/Podcast/Heading";
 import PageCard from '../../components/Cards/PageCard';
-import { accessToken, podcastSearch, podcast } from '../../utils/helper';
+import { accessToken, podcastSearch, podcasts } from '../../utils/helper';
 
 export default function Podcast({podcasts}) {
 
@@ -12,7 +10,8 @@ export default function Podcast({podcasts}) {
     <div className='flex flex-col min-h-screen pb-32'>
       <PageCard  image={podcasts?.result[0]?.image?.sub?.url} alt={podcasts?.result[0]?.image?.sub?.alt}/>
       <Heading title={podcasts?.result[0]?.title[0]?.text} artist={podcasts?.result[0]?.details[0].text} />
-      <Controls date={podcasts?.result[0]?.release_date} length={podcasts?.result[0]?.length}/>
+      <Controls date={podcasts?.result[0]?.release_date} length={podcasts?.result[0]?.length} 
+        title={podcasts?.result[0]?.title[0]?.text} content={podcasts?.result[0]?.details[2].text}/>
       <Content content={podcasts?.result[0]?.details[2].text}/>
     </div>
   )
@@ -21,9 +20,9 @@ export default function Podcast({podcasts}) {
 export async function getStaticPaths(){
 
   const masterRef = await accessToken()
-  const podcasts = await podcast(masterRef,'desc')
+  const podcastUid = await podcasts(masterRef,'desc')
 
-  const paths = podcasts?.uid?.map((uid) => ({
+  const paths = podcastUid?.uid?.map((uid) => ({
     params: { id: uid },
   }))
   
@@ -37,11 +36,11 @@ export async function getStaticPaths(){
 export async function getStaticProps({ params }){
   
   const masterRef = await accessToken()
-  const podcasts = await podcastSearch(masterRef,params.id)
+  const podcastData = await podcastSearch(masterRef,params.id)
 
   return { 
     props: {
-      podcasts : podcasts 
+      podcasts : podcastData
     } 
   }
 }

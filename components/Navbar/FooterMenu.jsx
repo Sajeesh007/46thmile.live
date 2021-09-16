@@ -18,7 +18,6 @@ export default function FooterMenu() {
 
   useEffect(() => {
     router.query.audioPlayer === 'true' && setShowMusicPlayer(true)
-    console.log(showMusicPlayer);
   }, [])
 
   const handleShow = () =>{

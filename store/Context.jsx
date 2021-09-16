@@ -25,7 +25,7 @@ export function useOther(){
 export function Context({children}) {
 
   const [podcastData, setPodcastData] = useState(null)
-  const [event, setEventData] = useState(null)
+  const [programsData, setProgramsData] = useState(null)
 
 
   const [miniIcon, setMiniIcon] = useState(<IoPlaySharp className='icon-music-control text-3xl pl-0.5'/>)
@@ -44,7 +44,7 @@ export function Context({children}) {
     <>
       <PodcastContext.Provider value={{
         podcastData, setPodcastData,
-        event, setEventData,
+        programsData, setProgramsData,
       }}>
         <ControlsContext.Provider value={{
           miniIcon, setMiniIcon,

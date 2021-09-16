@@ -46,8 +46,6 @@ export default function FullAudioPlayer() {
 
   return (
     <div className='fixed h-screen w-screen bg-black text-white top-0 z-100 '>
-      {/* onTouchStart={handleTouch} onTouchEnd={handleTouch} */}
-      
 
       <div className='flex flex-col space-y-8 px-6'>
 

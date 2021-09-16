@@ -30,11 +30,11 @@ const rj = async (ref,artistName) => {
   }
 }
 
-const podcast = async (ref,order) => {
-  const albumPredicates = '[at(document.type,"podcast")]'
-  const albumOrdering = `[my.podcast.release_date ${order}]`
-  const podcastData = await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${albumPredicates}]
-  &orderings=${albumOrdering}`)
+const podcasts = async (ref,order) => {
+  const podcastPredicates = '[at(document.type,"podcast")]'
+  const podcastOrdering = `[my.podcast.release_date ${order}]`
+  const podcastData = await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${podcastPredicates}]
+  &orderings=${podcastOrdering}`)
 
   //&pageSize=${pageSize}&page=${pageNumber}
   // currentPage : album.data.total_pages,
@@ -56,9 +56,11 @@ const podcastSearch = async (ref, uid) => {
   }
 }
 
-const events = async (ref) => {
+const events = async (ref,order) => {
   const eventPredicates = '[at(document.type, "events")]'
-  const eventsData =  await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${eventPredicates}]`)
+  const eventOrdering = `[my.podcast.release_date ${order}]`
+  const eventsData =  await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${eventPredicates}]
+  &orderings=${eventOrdering}`)
   return{
     uid : eventsData.data.results.map((events)=>events.uid),
     result : eventsData.data.results.map((events)=>events),
@@ -66,10 +68,10 @@ const events = async (ref) => {
 }
 
 const eventSearch = async (ref, uid) => {
-  const eventPredicates = `[at(my.event.uid,"${uid}")]`
+  const eventPredicates = `[at(my.events.uid,"${uid}")]`
   const eventData = await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${eventPredicates}]`)
   return{
-    result : eventData.data.results.map((events)=>events)
+    result : eventData.data.results.map((events)=>events.data)
   }
 }
 
@@ -89,4 +91,4 @@ const fetchHomePageSlider = async (ref) =>{
   }
 }
 
-export {accessToken, podcast, events, fetchAlbum, podcastSearch,eventSearch, fetchAboutPage, fetchHomePageSlider, rj}
+export {accessToken, podcasts, events, fetchAlbum, podcastSearch,eventSearch, fetchAboutPage, fetchHomePageSlider, rj}

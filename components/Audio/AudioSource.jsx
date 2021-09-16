@@ -4,9 +4,7 @@ import { useControls } from "../../store/Context"
 import { IoPlaySharp,IoPause } from 'react-icons/io5'
 
 export default function AudioSource() {
-
   
-
   const { play,setMiniIcon,setDuration,setCurrentTime,audioRef } = useControls()
 
   useEffect(() => {

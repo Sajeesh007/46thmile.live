@@ -1,30 +1,30 @@
-import { useEffect, useRef, useState } from 'react'
-import { IoPlaySharp,IoPause } from 'react-icons/io5'
+import { useRouter } from 'next/dist/client/router'
+
 import { IoMdShare} from 'react-icons/io'
 import { MdAdd } from 'react-icons/md'
-import { useControls,useOther } from '../../store/Context'
+import { useControls } from '../../store/Context'
 
-export default function Controls({date,length}) {
-
-  const audioRef = useRef()
+export default function Controls({date,length,title,content}) {
   
-  const {play,setPlay,miniIcon,setMiniIcon} = useControls()
+  const { play,setPlay,miniIcon} = useControls()
 
-
-  const audio ='https://p.scdn.co/mp3-preview/7507f6bb39f21c12c9d0f77da85d375db9fd2f81'
-
-  useEffect(() => {
-    if(play){
-      setMiniIcon((<IoPause className='icon-music-control text-3xl'/>))
-      audioRef.current.play()
-    }else{
-      setMiniIcon(<IoPlaySharp className='icon-music-control text-3xl'/>)
-      audioRef.current.pause()
-    }
-  }, [play])
-
+  const router = useRouter()
+ 
   const handleClick = ()=> {
     setPlay(!play)
+  }
+
+  const handleClickShare = async (e)=>{
+    const shareData = {
+      title: title,
+      text: content,
+      url: `https://46thmile-live.vercel.app${router.asPath}`
+    }
+    try {
+      await navigator.share(shareData)
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -32,7 +32,6 @@ export default function Controls({date,length}) {
       <div className='flex space-x-2'>
         <div className='flex justify-center items-center rounded-full bg-yellow-400 h-12 w-12' onClick={handleClick}>
           {miniIcon}
-          <audio src={audio} ref={audioRef}></audio>
         </div>
         <div className='flex flex-col text-sm justify-center items-start'>
           <p>{date}</p> 
@@ -41,7 +40,9 @@ export default function Controls({date,length}) {
       </div>
       
       <div className='flex justify-center items-center space-x-4'>
-        <IoMdShare className='text-2xl'/>
+        <div onClick={handleClickShare}>
+          <IoMdShare className='text-2xl'/>
+        </div>
         <MdAdd className='text-3xl'/>
       </div>
     </div>
