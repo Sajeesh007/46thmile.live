@@ -9,6 +9,8 @@ import Header from '../components/Navbar/Header'
 
 function MyApp({ Component, pageProps }) {
 
+  
+
   return (
     <div className='bg-black' 
     // style={{

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useRef } from 'react';
+import React, { createContext, useState, useContext, useRef} from 'react';
 import { IoPlaySharp} from 'react-icons/io5'
 
 const ControlsContext = createContext()
@@ -27,11 +27,13 @@ export function Context({children}) {
   const [podcastData, setPodcastData] = useState(null)
   const [event, setEventData] = useState(null)
 
-  const [miniIcon, setMiniIcon] = useState(<IoPlaySharp className='icon-music-control text-3xl'/>)
-  const [fullIcon, setFullIcon] = useState(<IoPlaySharp className='icon-music-control text-4xl pl-1'/>)
-  const [play,setPlay] = useState(false)
 
+  const [miniIcon, setMiniIcon] = useState(<IoPlaySharp className='icon-music-control text-3xl pl-0.5'/>)
+  const [play,setPlay] = useState(false)
+  const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
   const audioRef = useRef()
+
 
   const [active,setActive] = useState(2)
 
@@ -46,9 +48,10 @@ export function Context({children}) {
       }}>
         <ControlsContext.Provider value={{
           miniIcon, setMiniIcon,
-          fullIcon, setFullIcon,
           play,setPlay,
-          audioRef,
+          duration, setDuration,
+          currentTime, setCurrentTime,
+          audioRef
         }}>
 
           <SliderContext.Provider value={{

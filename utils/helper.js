@@ -57,10 +57,36 @@ const podcastSearch = async (ref, uid) => {
 }
 
 const events = async (ref) => {
-  const playlistPredicates = '[at(document.type, "playlists_page")]'
-  const playlist =  await axios.get(`https://ommm-website.prismic.io/api/v2/documents/search?ref=${ref}&q=[${playlistPredicates}]`)
-  const playlistDetails = Object.values(playlist.data.results[0].data)
-  return playlistDetails
+  const eventPredicates = '[at(document.type, "events")]'
+  const eventsData =  await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${eventPredicates}]`)
+  return{
+    uid : eventsData.data.results.map((events)=>events.uid),
+    result : eventsData.data.results.map((events)=>events),
+  }
 }
 
-export {accessToken, podcast, events, fetchAlbum, podcastSearch, rj}
+const eventSearch = async (ref, uid) => {
+  const eventPredicates = `[at(my.event.uid,"${uid}")]`
+  const eventData = await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${eventPredicates}]`)
+  return{
+    result : eventData.data.results.map((events)=>events)
+  }
+}
+
+const fetchAboutPage = async (ref) =>{
+  const predicates = '[at(document.type, "about_us")]'
+  const data =  await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${predicates}]`)
+  return{
+    result : data.data.results.map((events)=>events)
+  }
+}
+
+const fetchHomePageSlider = async (ref) =>{
+  const predicates = '[at(document.type, "home")]'
+  const data =  await axios.get(`https://46thmile.prismic.io/api/v2/documents/search?ref=${ref}&q=[${predicates}]`)
+  return{
+    result : data.data.results.map((events)=>events)
+  }
+}
+
+export {accessToken, podcast, events, fetchAlbum, podcastSearch,eventSearch, fetchAboutPage, fetchHomePageSlider, rj}

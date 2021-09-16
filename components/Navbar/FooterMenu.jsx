@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import MiniAudioPlayer from '../../components/Audio/MiniAudioPlayer'
 import { FaPodcast } from "react-icons/fa"
@@ -7,19 +9,28 @@ import FullAudioPlayer from '../Audio/FullAudioPlayer'
 import { useOther } from '../../store/Context'
 
 
+
 export default function FooterMenu() {
+
+  const router = useRouter()
 
   const {showMusicPlayer,setShowMusicPlayer} = useOther()
 
+  useEffect(() => {
+    router.query.audioPlayer === 'true' && setShowMusicPlayer(true)
+    console.log(showMusicPlayer);
+  }, [])
+
   const handleShow = () =>{
-    setShowMusicPlayer(!showMusicPlayer)
+    setShowMusicPlayer(true)
+    router.push(`${router.asPath}?audioPlayer=true`, undefined, { shallow: true })
   }
 
 
   return (
     <div className='flex flex-col'>
       <div>
-        {showMusicPlayer && <FullAudioPlayer hide={handleShow}/>}
+        {(showMusicPlayer || router.query.audioPlayer === 'true') && <FullAudioPlayer />}
       </div>
       <div className='fixed w-full bottom-16 px-3' >
         <MiniAudioPlayer show={handleShow}/>

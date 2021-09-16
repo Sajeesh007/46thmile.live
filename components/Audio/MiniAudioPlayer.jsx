@@ -1,23 +1,11 @@
 import demo from '../../public/demo.jpg'
-import { useEffect } from "react"
-import { IoPlaySharp,IoPause } from 'react-icons/io5'
+
 import { useControls } from '../../store/Context'
+import AudioSource from './AudioSource'
 
 export default function MiniAudioPlayer({show}) {
-  
-  const { play,setPlay,miniIcon,setMiniIcon,audioRef } = useControls()
-
-  const audio ='https://p.scdn.co/mp3-preview/7507f6bb39f21c12c9d0f77da85d375db9fd2f81'
-
-  useEffect(() => {
-    if(play){
-      setMiniIcon((<IoPause className='icon-music-control text-3xl'/>))
-      audioRef.current.play()
-    }else{
-      setMiniIcon(<IoPlaySharp className='icon-music-control text-3xl'/>)
-      audioRef.current.pause()
-    }
-  }, [play])
+ 
+  const { play,setPlay,miniIcon} = useControls()
 
   const handleClick = ()=> {
     setPlay(!play)
@@ -34,7 +22,7 @@ export default function MiniAudioPlayer({show}) {
       </div>
       <div onClick={handleClick} className='flex justify-center items-center'>
         {miniIcon}
-        <audio src={audio} ref={audioRef}></audio>
+        <AudioSource/>
       </div>
     </div>
   )
